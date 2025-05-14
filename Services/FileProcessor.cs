@@ -20,6 +20,7 @@ public class FileProcessor : IFileProcessor
         var files = Directory.GetFiles(folderPath, "*.pdf");
         foreach (var file in files)
         {
+            Console.WriteLine($"Processing file: {file}");
             var rows = _parser.Parse(file);
             var outputPath = Path.ChangeExtension(file, ".xlsx");
             _exporter.Export(rows, outputPath);
